@@ -1,0 +1,59 @@
+## Database configuration
+
+database:
+    driverClass: org.h2.Driver
+    user: sa
+    password: sa
+    url: jdbc:h2:target/milky
+
+## HTTP Settings
+http:
+    port: 10012
+    adminPort: 10013
+    maxThreads: 100
+    minThreads: 3
+    connectorType: blocking
+    maxIdleTime: 1s
+    acceptorThreads: 3
+    acceptorThreadPriorityOffset: 0
+    maxBufferCount: 1024
+    requestBufferSize: 32KB
+    requestHeaderBufferSize: 6KB
+    reuseAddress: true
+    soLingerTime: 1s
+    useDirectBuffers: true
+    useForwardedHeader: true
+
+    ## Http Logger
+    requestLog:
+        console:
+            enabled: true
+        file:
+            enabled: true
+            currentLogFilename: ./logs/requests.log
+            archivedLogFilenamePattern: ./logs/requests-%d.log.gz
+            archivedFileCount: 5
+        syslog:
+            enabled: false
+            host: localhost
+            facility: local0
+
+## Log Settings
+logging:
+    level: INFO
+    loggers:
+        id.mamatoshi.milky: DEBUG
+        org.hibernate.SQL: ALL
+    console:
+        enabled: true
+        threshold: ALL
+    file:
+        enabled: true
+        threshold: ALL
+        currentLogFilename: ./logs/milkyway.log
+        archivedLogFilenamePattern: ./logs/milkyway-%d.log.gz
+        archivedFileCount: 5
+    syslog:
+        enabled: false
+        host: localhost
+        facility: local0
